@@ -1,0 +1,32 @@
+<aura:component controller="AdicionaRecursosCriaturaCMPController" implements="flexipage:availableForAllPageTypes,force:hasRecordId" access="global">
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="recordsList" type="List" default = "[ 
+        {'label': 'New', 'value': 'new'}
+		{'label': 'In Progress', 'value': 'inProgress'}
+        {'label': 'Finished', 'value': 'finished'}
+	]" />
+    <lightning:card variant="Narrow" title="Adiciona Recursos" iconName="custom:custom9">
+        <aura:set attribute="actions">
+            <lightning:buttonIcon iconName="utility:down" variant="border-filled" alternativeText="Show More"/>
+        </aura:set>
+        { ! v.recordId }
+        <p class="slds-p-horizontal_small">
+            <lightning:combobox 
+                                name="listaRecurso" 
+                                label="Selecione um Recurso" 
+                                value="inProgress" 
+                                placeholder="selecione um recurso..." 
+                                options="{! v.recursosList }" 
+                                onchange="{! c.handleChange }"
+            />
+
+        </p>
+        
+        <aura:set attribute="footer">
+            <lightning:button iconName="utility:down" variant="brant" label="Adicionar" title="clique aqui para..." onclick="{! c.salvar }"/>
+        </aura:set>
+        
+    </lightning:card>
+</aura:component>
