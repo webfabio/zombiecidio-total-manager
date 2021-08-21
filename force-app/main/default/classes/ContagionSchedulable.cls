@@ -4,6 +4,7 @@ global class ContagionSchedulable implements Schedulable
 	global void execute(SchedulableContext SC) 
     {   
         this.contagiar();
+        
     }
     
     
